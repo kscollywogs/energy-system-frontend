@@ -13,16 +13,6 @@ export default function usAppConfig() {
 	})
 
 	// ------------------------------------------------
-	// RTL
-	// ------------------------------------------------
-	const isRTL = computed({
-		get: () => store.state.appConfig.layout.isRTL,
-		set: val => {
-			store.commit('appConfig/TOGGLE_RTL', val)
-		},
-	})
-
-	// ------------------------------------------------
 	// Skin
 	// ------------------------------------------------
 	const skin = computed({
@@ -122,7 +112,6 @@ export default function usAppConfig() {
 
 	return {
 		isVerticalMenuCollapsed,
-		isRTL,
 		skin,
 		skinClasses,
 		routerTransition,

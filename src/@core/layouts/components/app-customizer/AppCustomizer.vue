@@ -20,9 +20,9 @@
 		<div class="customizer-section d-flex justify-content-between align-items-center">
 			<div>
 				<h4 class="text-uppercase mb-0">
-					Theme Customizer
+					自定义主题
 				</h4>
-				<small>Customize &amp; Preview in Real Time</small>
+				<small>。。</small>
 			</div>
 			<feather-icon
 				icon="XIcon"
@@ -110,7 +110,7 @@
 					v-if="layoutType === 'vertical'"
 					class="d-flex justify-content-between align-items-center mt-2"
 				>
-					<span class="font-weight-bold">Menu Collapsed</span>
+					<span class="font-weight-bold">展开菜单</span>
 					<b-form-checkbox
 						v-model="isVerticalMenuCollapsed"
 						name="is-vertical-menu-collapsed"
@@ -122,7 +122,7 @@
 
 				<!-- Menu Visiblity -->
 				<div class="d-flex justify-content-between align-items-center mt-2">
-					<span class="font-weight-bold">Menu Hidden</span>
+					<span class="font-weight-bold">隐藏菜单</span>
 					<b-form-checkbox
 						v-model="isNavMenuHidden"
 						name="is-menu-visible"

@@ -6,7 +6,7 @@
 			<b-link class="brand-logo">
 				<vuexy-logo/>
 				<h2 class="brand-text text-primary ml-1">
-					Vuexy
+					能源管理
 				</h2>
 			</b-link>
 			<!-- /Brand logo-->
@@ -41,10 +41,10 @@
 						title-tag="h2"
 						class="font-weight-bold mb-1"
 					>
-						Welcome to Vuexy! 👋
+						欢迎登录能源管理平台 👋
 					</b-card-title>
 					<b-card-text class="mb-2">
-						Please sign-in to your account and start the adventure
+						请输入账号密码登录系统
 					</b-card-text>
 
 					<!-- form -->
@@ -55,7 +55,7 @@
 						>
 							<!-- email -->
 							<b-form-group
-								label="Email"
+								label="账号"
 								label-for="login-email"
 							>
 								<validation-provider
@@ -68,7 +68,6 @@
 										v-model="userEmail"
 										:state="errors.length > 0 ? false:null"
 										name="login-email"
-										placeholder="john@example.com"
 									/>
 									<small class="text-danger">{{ errors[0] }}</small>
 								</validation-provider>
@@ -77,10 +76,10 @@
 							<!-- forgot password -->
 							<b-form-group>
 								<div class="d-flex justify-content-between">
-									<label for="login-password">Password</label>
-									<b-link :to="{name:'auth-forgot-password-v2'}">
-										<small>Forgot Password?</small>
-									</b-link>
+									<label for="login-password">密码</label>
+									<!--<b-link :to="{name:'auth-forgot-password-v2'}">-->
+									<!--	<small>忘记密码</small>-->
+									<!--</b-link>-->
 								</div>
 								<validation-provider
 									#default="{ errors }"
@@ -119,7 +118,7 @@
 									v-model="status"
 									name="checkbox-1"
 								>
-									Remember Me
+									记住账号
 								</b-form-checkbox>
 							</b-form-group>
 
@@ -130,52 +129,17 @@
 								block
 								@click="validationForm"
 							>
-								Sign in
+								登入
 							</b-button>
 						</b-form>
 					</validation-observer>
 
 					<b-card-text class="text-center mt-2">
-						<span>New on our platform? </span>
-						<b-link :to="{name:'page-auth-register-v2'}">
-							<span>&nbsp;Create an account</span>
+						<b-link :to="{ name:'page-auth-register-v2' }">
+							<span>&nbsp;注册账号</span>
 						</b-link>
 					</b-card-text>
 
-					<!-- divider -->
-					<div class="divider my-2">
-						<div class="divider-text">
-							or
-						</div>
-					</div>
-
-					<!-- social buttons -->
-					<div class="auth-footer-btn d-flex justify-content-center">
-						<b-button
-							variant="facebook"
-							href="javascript:void(0)"
-						>
-							<feather-icon icon="FacebookIcon"/>
-						</b-button>
-						<b-button
-							variant="twitter"
-							href="javascript:void(0)"
-						>
-							<feather-icon icon="TwitterIcon"/>
-						</b-button>
-						<b-button
-							variant="google"
-							href="javascript:void(0)"
-						>
-							<feather-icon icon="MailIcon"/>
-						</b-button>
-						<b-button
-							variant="github"
-							href="javascript:void(0)"
-						>
-							<feather-icon icon="GithubIcon"/>
-						</b-button>
-					</div>
 				</b-col>
 			</b-col>
 			<!-- /Login-->
@@ -226,7 +190,7 @@ export default {
 		ValidationProvider,
 		ValidationObserver,
 	},
-	mixins: [togglePasswordVisibility],
+	mixins: [ togglePasswordVisibility ],
 	data() {
 		return {
 			status: '',
@@ -258,7 +222,7 @@ export default {
 					this.$toast({
 						component: ToastificationContent,
 						props: {
-							title: 'Form Submitted',
+							title: '提交成功',
 							icon: 'EditIcon',
 							variant: 'success',
 						},
@@ -271,5 +235,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import '@core/scss/vue/pages/page-auth.scss';
+@import '~@core/scss/vue/pages/page-auth.scss';
 </style>

@@ -1,4 +1,23 @@
-# Vuexy - Vuejs, React, HTML & Laravel Admin Dashboard Template
+# energy-system-frontend
 
-**Vuexy – Vuejs, React, HTML & Laravel Admin Dashboard Template** – is the most developer friendly & highly customizable
-Admin Dashboard Template based on Bootstrap 4, Bootstrap Vue & Reactstrap.
+## Project setup
+
+```
+yarn install
+```
+
+### Compiles and hot-reloads for development
+
+```
+yarn serve
+```
+
+### Compiles and minifies for production
+
+```
+yarn build
+```
+
+### Customize configuration
+
+See [Configuration Reference](https://cli.vuejs.org/config/).

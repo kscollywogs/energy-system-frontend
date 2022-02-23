@@ -36,7 +36,7 @@ export default function useAppCustomizer() {
 	]
 
 	// Navbar
-	const navbarColors = ['', 'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark']
+	const navbarColors = [ '', 'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'dark' ]
 
 	// Navbar Types
 	const navbarTypes = [
@@ -55,7 +55,6 @@ export default function useAppCustomizer() {
 
 	// eslint-disable-next-line object-curly-newline
 	const {
-		isRTL,
 		skin,
 		contentWidth,
 		routerTransition,
@@ -81,9 +80,6 @@ export default function useAppCustomizer() {
 		// Content Width
 		contentWidth,
 		contentWidthOptions,
-
-		// RTL
-		isRTL,
 
 		// routerTransition
 		routerTransition,
