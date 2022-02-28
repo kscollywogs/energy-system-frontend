@@ -1,79 +1,48 @@
 <template>
-	<b-card
-		v-if="data"
-		no-body
-		class="card-revenue-budget"
-	>
+	<b-card v-if="data" no-body class="card-revenue-budget">
 		<b-row class="mx-0">
-			<b-col
-				md="8"
-				class="revenue-report-wrapper"
-			>
+			<b-col md="8" class="revenue-report-wrapper">
 				<div class="d-sm-flex justify-content-between align-items-center mb-3">
-					<h4 class="card-title mb-50 mb-sm-0">
-						Revenue Report
-					</h4>
+					<h4 class="card-title mb-50 mb-sm-0">能耗量</h4>
+
 					<div class="d-flex align-items-center">
 						<div class="d-flex align-items-center mr-2">
-							<span class="bullet bullet-primary svg-font-small-3 mr-50 cursor-pointer"/>
-							<span>Earning</span>
+							<span class="bullet bullet-primary svg-font-small-3 mr-50 cursor-pointer" />
+							<span>电力</span><!--忘了怎么取这个数据的name了。。-->
 						</div>
 						<div class="d-flex align-items-center ml-75">
-							<span class="bullet bullet-warning svg-font-small-3 mr-50 cursor-pointer"/>
-							<span>Expense</span>
+							<span class="bullet bullet-warning svg-font-small-3 mr-50 cursor-pointer" />
+							<span>水</span>
 						</div>
 					</div>
 				</div>
-
 				<!-- chart -->
-				<vue-apex-charts
-					id="revenue-report-chart"
-					type="bar"
-					height="230"
-					:options="revenueReport.chartOptions"
-					:series="data.revenueReport.series"
-				/>
+				<vue-apex-charts ref="energy-report-chart" type="bar" height="230"
+												 :options="energyChart.chartOptions"
+												 :series="data.energyReport.series" />
 			</b-col>
 
-			<b-col
-				md="4"
-				class="budget-wrapper"
-			>
-				<b-dropdown
-					text="2020"
-					size="sm"
-					class="budget-dropdown"
-					variant="outline-primary"
-				>
-					<b-dropdown-item
-						v-for="year in data.years"
-						:key="year"
-					>
+			<b-col md="4" class="budget-wrapper">
+				<b-dropdown text="2020" size="sm" class="budget-dropdown" variant="outline-primary">
+					<b-dropdown-item v-for="year in data.years" :key="year">
 						{{ year }}
 					</b-dropdown-item>
 				</b-dropdown>
 
 				<h2 class="mb-25">
-					${{ data.price }}
+					{{ data.cost }}
 				</h2>
-				<div class="d-flex justify-content-center">
-					<span class="font-weight-bolder mr-25">Budget:</span>
-					<span>56,800</span>
-				</div>
-				<vue-apex-charts
-					id="budget-chart"
-					type="line"
-					height="80"
-					:options="budgetChart.options"
-					:series="data.budgetChart.series"
-				/>
 
-				<b-button
-					v-ripple.400="'rgba(255, 255, 255, 0.15)'"
-					variant="primary"
-				>
-					Increase Budget
+				<div class="d-flex justify-content-center">
+					<span class="font-weight-bolder mr-25 mb-1">年用量</span>
+				</div>
+				<vue-apex-charts ref="budget-chart" type="line" height="80"
+												 :options="yearCostChart.options" :series="data.budgetChart.series" />
+
+				<b-button v-ripple.400="'rgba(255, 255, 255, 0.15)'" variant="primary">
+					查看详情
 				</b-button>
+
 			</b-col>
 		</b-row>
 	</b-card>
@@ -109,8 +78,8 @@ export default {
 	},
 	data() {
 		return {
-			revenue_report: {},
-			revenueReport: {
+			energy_report: {},
+			energyChart: {
 				chartOptions: {
 					chart: {
 						stacked: true,
@@ -127,7 +96,7 @@ export default {
 						},
 					},
 					xaxis: {
-						categories: [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep' ],
+						categories: [ '1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月' ],
 						labels: {
 							style: {
 								colors: '#6E6B7B',
@@ -167,8 +136,8 @@ export default {
 					},
 				},
 			},
-			// budget chart
-			budgetChart: {
+			// chart 2
+			yearCostChart: {
 				options: {
 					chart: {
 						height: 80,

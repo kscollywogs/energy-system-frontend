@@ -1,45 +1,35 @@
 <template>
-	<b-card
-		v-if="data"
-		class="earnings-card"
-	>
+	<b-card v-if="data" class="earnings-card">
 		<b-row>
 			<b-col cols="6">
 				<b-card-title class="mb-1">
-					Earnings
+					当月费用占比
 				</b-card-title>
-				<div class="font-small-2">
-					This Month
+				<div class="font-small-4">
+					{{ data.month }} 月:
 				</div>
 				<h5 class="mb-1">
-					$4055.56
+					{{ data.total }}￥
 				</h5>
-				<b-card-text class="text-muted font-small-2">
-					<span class="font-weight-bolder">68.2%</span><span> more earnings than last month.</span>
-				</b-card-text>
 			</b-col>
+
 			<b-col cols="6">
 				<!-- chart -->
-				<vue-apex-charts
-					height="120"
-					:options="earningsChart.chartOptions"
-					:series="data.series"
-				/>
+				<vue-apex-charts height="120" :options="donutChart.chartOptions" :series="data.series" />
 			</b-col>
 		</b-row>
 	</b-card>
 </template>
 
 <script>
-import {
-	BCard, BRow, BCol, BCardTitle, BCardText,
-} from 'bootstrap-vue'
+import { BCard, BRow, BCol, BCardTitle, BCardText, } from 'bootstrap-vue'
 import VueApexCharts from 'vue-apexcharts'
 import { $themeColors } from '@themeConfig'
 
 const $earningsStrokeColor2 = '#28c76f66'
 const $earningsStrokeColor3 = '#28c76f33'
 export default {
+	names: 'EarningChart',
 	components: {
 		BCard,
 		BRow,
@@ -57,7 +47,7 @@ export default {
 	},
 	data() {
 		return {
-			earningsChart: {
+			donutChart: {
 				chartOptions: {
 					chart: {
 						type: 'donut',
@@ -70,7 +60,7 @@ export default {
 					},
 					legend: {show: false},
 					comparedResult: [ 2, -3, 8 ],
-					labels: [ 'App', 'Service', 'Product' ],
+					labels: [ '收入', '支出', '什么玩意' ],
 					stroke: {width: 0},
 					colors: [ $earningsStrokeColor2, $earningsStrokeColor3, $themeColors.success ],
 					grid: {
@@ -99,7 +89,7 @@ export default {
 									total: {
 										show: true,
 										offsetY: 15,
-										label: 'App',
+										label: '费用',
 										formatter() {
 											return '53%'
 										},

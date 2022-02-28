@@ -1,19 +1,11 @@
 <template>
-	<b-card
-		v-if="data"
-		class="card-tiny-line-stats"
-		body-class="pb-50"
-	>
-		<h6>Profit</h6>
+	<b-card v-if="data" class="card-tiny-line-stats" body-class="pb-50">
+		<h4>{{ data.name }}</h4>
 		<h2 class="font-weight-bolder mb-1">
-			6,24k
+			{{ data.quality }} 个
 		</h2>
 		<!-- chart -->
-		<vue-apex-charts
-			height="70"
-			:options="statisticsProfit.chartOptions"
-			:series="data.series"
-		/>
+		<vue-apex-charts height="70" :options="linechart.chartOptions" :series="data.series" />
 	</b-card>
 </template>
 
@@ -38,7 +30,7 @@ export default {
 	},
 	data() {
 		return {
-			statisticsProfit: {
+			linechart: {
 				chartOptions: {
 					chart: {
 
